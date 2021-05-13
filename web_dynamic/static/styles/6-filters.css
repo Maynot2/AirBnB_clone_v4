@@ -40,6 +40,10 @@ button:hover {
     margin-top: 0;
     font-weight: 400;
     font-size: 14px;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 100%;
 }
 .locations {
     height: 100%;
@@ -53,7 +57,7 @@ button:hover {
 
 .popover {
     visibility: hidden;
-    width: 100%;
+    width: inherit;
     border: 1px solid #DDDDDD;
     border-radius: 4px;
     background: #FAFAFA;
@@ -62,6 +66,8 @@ button:hover {
     overflow-y: scroll;
     scrollbar-width: none;
     max-height: 300px;
+    position: absolute;
+    top: 100%;
 }
 
 .popover::-webkit-scrollbar{
@@ -78,6 +84,11 @@ button:hover {
     margin: 0px;
 }
 
+.amenities .popover ul li {
+    display: flex;
+    align-items: center;
+}
+
 .locations .popover {
     margin-top: 0%;
 }
@@ -89,6 +100,10 @@ button:hover {
 .popover ul li{
     padding: 4px;
     padding-left: 10px;
+}
+
+.popover ul li span {
+    margin-left: 10px;
 }
 
 .popover ul h2{
