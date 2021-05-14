@@ -30,12 +30,67 @@ $(document).ready(function () {
     }
   });
 
+  const stateList = [];
+  const stateH4Elem = $('.locations h4');
+
+  $('.state').click(function () {
+    const id = $(this).data('id');
+    if ($(this).is(':checked')) {
+      if (stateList.length === 0) {
+        stateH4Elem.text(($(this)).data('name'));
+      } else {
+        stateH4Elem.append(', ' + ($(this)).data('name'));
+      }
+      stateList.push(id);
+    } else {
+      const index = stateList.findIndex((el) => el === id);
+      stateList.splice(index, 1);
+      let newText;
+      if (index === 0 && stateList.length === 0) {
+        stateH4Elem.html('&nbsp;');
+        return;
+      } else if (index === 0) {
+        newText = stateH4Elem.text().replace(($(this)).data('name') + ', ', '');
+      } else {
+        newText = stateH4Elem.text().replace(', ' + ($(this)).data('name'), '');
+      }
+      stateH4Elem.text(newText);
+    }
+  });
+
+  const cityList = [];
+
+  $('.city').click(function () {
+    const id = $(this).data('id');
+    if ($(this).is(':checked')) {
+      if (stateList.length === 0 && cityList.length === 0) {
+        stateH4Elem.text(($(this)).data('name'));
+      } else {
+        stateH4Elem.append(', ' + ($(this)).data('name'));
+      }
+      cityList.push(id);
+    } else {
+      const index = cityList.findIndex((el) => el === id);
+      cityList.splice(index, 1);
+      let newText;
+      if (index === 0 && stateList.length === 0 && cityList.length === 0) {
+        stateH4Elem.html('&nbsp;');
+        return;
+      } else if (index === 0 && cityList.length > 1) {
+        newText = stateH4Elem.text().replace(($(this)).data('name') + ', ', '');
+      } else {
+        newText = stateH4Elem.text().replace(', ' + ($(this)).data('name'), '');
+      }
+      stateH4Elem.text(newText);
+    }
+  });
+
   $('.filters button').click(() => {
     $('.places').empty();
     $.ajax({
       type: 'POST',
       url: 'http://0.0.0.0:5001/api/v1/places_search',
-      data: JSON.stringify({ amenities: amenityList }),
+      data: JSON.stringify({ amenities: amenityList, states: stateList, cities: cityList }),
       contentType: 'application/json',
       crossDomain: true,
       dataType: 'json',

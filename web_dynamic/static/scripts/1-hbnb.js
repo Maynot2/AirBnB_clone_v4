@@ -1,6 +1,5 @@
-let amenityList;
 $(document).ready(function () {
-  amenityList = [];
+  const amenityList = [];
   const amenitiesH4Elem = $('.amenities h4');
 
   $('.amenities .check_box').click(function () {
@@ -28,5 +27,3 @@ $(document).ready(function () {
     }
   });
 });
-
-export { amenityList };
