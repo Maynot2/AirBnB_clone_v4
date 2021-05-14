@@ -1,5 +1,6 @@
+let list;
 $(document).ready(function () {
-  const list = [];
+  list = [];
   const amenitiesH4Elem = $('.amenities h4');
 
   $('.check_box').click(function () {
@@ -27,3 +28,5 @@ $(document).ready(function () {
     }
   });
 });
+
+export { list };
