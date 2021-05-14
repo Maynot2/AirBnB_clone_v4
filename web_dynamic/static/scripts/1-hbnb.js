@@ -1,22 +1,22 @@
-let list;
+let amenityList;
 $(document).ready(function () {
-  list = [];
+  amenityList = [];
   const amenitiesH4Elem = $('.amenities h4');
 
-  $('.check_box').click(function () {
+  $('.amenities .check_box').click(function () {
     const id = $(this).data('id');
     if ($(this).is(':checked')) {
-      if (list.length === 0) {
+      if (amenityList.length === 0) {
         amenitiesH4Elem.text(($(this)).data('name'));
       } else {
         amenitiesH4Elem.append(', ' + ($(this)).data('name'));
       }
-      list.push(id);
+      amenityList.push(id);
     } else {
-      const index = list.findIndex((el) => el === id);
-      list.splice(index, 1);
+      const index = amenityList.findIndex((el) => el === id);
+      amenityList.splice(index, 1);
       let newText;
-      if (index === 0 && list.length === 0) {
+      if (index === 0 && amenityList.length === 0) {
         amenitiesH4Elem.html('&nbsp;');
         return;
       } else if (index === 0) {
@@ -29,4 +29,4 @@ $(document).ready(function () {
   });
 });
 
-export { list };
+export { amenityList };

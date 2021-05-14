@@ -1,4 +1,4 @@
-import { list } from './1-hbnb.js';
+import { amenityList } from './1-hbnb.js';
 
 /**
   Fetching places given amenities selection
@@ -9,7 +9,7 @@ $(document).ready(function () {
     $.ajax({
       type: 'POST',
       url: 'http://0.0.0.0:5001/api/v1/places_search',
-      data: JSON.stringify({ amenities: list }),
+      data: JSON.stringify({ amenities: amenityList }),
       contentType: 'application/json',
       crossDomain: true,
       dataType: 'json',
