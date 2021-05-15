@@ -14,6 +14,28 @@
     }
 }
 
+.content li {
+  padding-top: 3%;
+}
+.title {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #DDDDDD;
+  margin-top: 5%;
+  align-items: center;
+}
+
+.title h2{
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.content ul{
+  padding: 0;
+
+}
+.content ul li{
+  list-style: none;
+}
 .placesh1 h1 {
     width: 100%;
     margin-right: 400px;
@@ -32,7 +54,7 @@
     border: 1px solid #FF5A5F;
     border-radius: 4px;
 }
-.places h2 {
+.places .title_box h2 {
     font-size: 30px;
     text-align: center;
     margin-top: 0;
